@@ -12,7 +12,8 @@ template(name='home')
 					.ui-flex-row(style='margin-bottom: 4px;')
 						.ui-flex-1x {{user.username}}
 						small.ui-text-mute {{fromNow createdAt}}
-					a {{title}}
+					h2
+						a(href='{{pathFor route="viewTopic"}}') {{title}}
 					.ui-flex-row
 						small.ui-padded-sm {{stats.likes}} 喜欢
 						small.ui-padded-sm {{stats.comments}} 讨论
@@ -30,7 +31,8 @@ template(name='home')
 					.ui-flex-row(style='margin-bottom: 4px;')
 						.ui-flex-1x {{user.username}}
 						small.ui-text-mute {{fromNow createdAt}}
-					a {{title}}
+					h2
+						a(href='{{pathFor route="viewTopic"}}') {{title}}
 
 	.ui-flex-column.ui-flex-1x.ui-padded-sm
 
@@ -44,7 +46,8 @@ template(name='home')
 					.ui-flex-row(style='margin-bottom: 4px;')
 						.ui-flex-1x {{user.username}}
 						small.ui-text-mute {{fromNow createdAt}}
-					a {{title}}
+					h2
+						a(href='{{pathFor route="viewTopic"}}') {{title}}
 
 	.ui-flex-column.ui-flex-1x.ui-padded-sm
 
@@ -58,4 +61,5 @@ template(name='home')
 					.ui-flex-row(style='margin-bottom: 4px;')
 						.ui-flex-1x {{user.username}}
 						small.ui-text-mute {{fromNow createdAt}}
-					a {{title}}
+					h2
+						a(href='{{pathFor route="viewTopic"}}') {{title}}
