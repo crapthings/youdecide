@@ -1,0 +1,18 @@
+template(name='ui_header')
+
+	.ui-header
+
+		.ui-container
+
+			.ui-flex-row.ui-padded-sm
+
+				a.ui-padded-sm(href='{{pathFor route="home"}}') 首页
+
+				if currentUser
+					a.ui-padded-sm(href='{{pathFor route="newTopic"}}') 发布
+
+				unless currentUser
+					a.ui-padded-sm(href='{{pathFor route="signup"}}') 注册
+				else
+					a.ui-padded-sm(href='{{pathFor route="profile"}}') {{currentUser.username}}
+					a.ui-padded-sm(href='#' onclick='Meteor.logout();') 注销

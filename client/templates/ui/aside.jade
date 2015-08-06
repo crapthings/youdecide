@@ -1,0 +1,15 @@
+template(name='ui_aside')
+
+	.ui-aside
+
+		unless currentUser
+
+			+signin
+
+
+		with system
+
+			.ui-flex-column
+
+				span 用户 {{stats.users}}
+				span 话题 {{stats.topics}}

@@ -1,0 +1,23 @@
+template(name='viewTopic')
+
+	with topic
+
+		.ui-flex-row.ui-flex-center--child
+
+		.ui-flex-1x
+
+			h3.ui-padded  {{title}}
+
+				.ui-flex-row
+
+					.ui-flex-1x
+
+						form#leftForm
+							textarea.leftContent
+							input(type='submit' value='提交')
+
+					.ui-flex-1x
+
+						form#rightForm
+							textarea.rightContent
+							input(type='submit' value='提交')
