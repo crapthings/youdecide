@@ -1,21 +1,19 @@
 template(name='layout_default')
 
-	+ui_header
+	.ui-container
+
+		+ui_header
+
+		+yield
+
+template(name='layout_topic')
 
 	.ui-container
+
+		+ui_header
 
 		.ui-flex-row
 
 			.ui-flex-1x
 
 				+yield
-
-			+ui_aside
-
-template(name='layout_topic')
-
-	+ui_header
-
-	.ui-container
-
-		+yield

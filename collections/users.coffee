@@ -1,5 +1,12 @@
 #
 
+Meteor.users.before.insert (userId, user) ->
+	_.extend user,
+		profile:
+			avatarHash: CryptoJS.MD5('demo').toString()
+
+#
+
 Meteor.users.after.insert ->
 	System.update { init: true },
 		$inc:
