@@ -13,6 +13,8 @@ Comments.remove {}
 
 Meteor.startup ->
 
+	#
+
 	unless System.findOne()
 
 		System.insert
@@ -20,19 +22,26 @@ Meteor.startup ->
 			stats:
 				users: 0
 				topics: 0
+				comments: 0
+
+	#
 
 	unless Meteor.users.findOne { username: 'demo' }
 
 		Accounts.createUser
 			username: 'demo'
 			password: 'demo'
+			profile:
+				displayName: '演示用户'
+				avatarHash: CryptoJS.MD5('demo').toString()
 
 	_(100).times ->
+		username = faker.internet.userName()
 		Meteor.users.insert
-			username: faker.internet.userName()
+			username: username
 			profile:
 				displayName: faker.name.findName()
-				avatarUrl: faker.internet.avatar()
+				avatarHash: CryptoJS.MD5(username).toString()
 
 	users = Meteor.users.find().fetch()
 

@@ -7,61 +7,47 @@ template(name='home')
 			h3.ui-padded 最新话题
 
 			each latestTopics
-				.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
-					.ui-padded-sm
-						img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
-					.ui-flex-column.ui-flex-1x.ui-padded-sm
-						.ui-flex-row(style='margin-bottom: 4px;')
-							.ui-flex-1x {{user.username}}
-							small.ui-text-mute {{fromNow createdAt}}
-						h2
-							a(href='{{pathFor route="viewTopic"}}') {{title}}
-						.ui-flex-row
-							small.ui-padded-sm {{stats.likes}} 喜欢
-							small.ui-padded-sm {{stats.comments}} 讨论
-							small.ui-padded-sm {{stats.views}} 浏览
+
+				+topicItem
 
 		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
 			h3.ui-padded 今日热门
 
 			each topicsOfTheDay
-				.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
-					.ui-padded-sm
-						img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
-					.ui-flex-column.ui-flex-1x.ui-padded-sm
-						.ui-flex-row(style='margin-bottom: 4px;')
-							.ui-flex-1x {{user.username}}
-							small.ui-text-mute {{fromNow createdAt}}
-						h2
-							a(href='{{pathFor route="viewTopic"}}') {{title}}
+
+				+topicItem
 
 		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
 			h3.ui-padded 热门话题
 
 			each topicsOfTheMonth
-				.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
-					.ui-padded-sm
-						img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
-					.ui-flex-column.ui-flex-1x.ui-padded-sm
-						.ui-flex-row(style='margin-bottom: 4px;')
-							.ui-flex-1x {{user.username}}
-							small.ui-text-mute {{fromNow createdAt}}
-						h2
-							a(href='{{pathFor route="viewTopic"}}') {{title}}
+
+				+topicItem
 
 		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
 			h3.ui-padded 推荐话题
 
 			each recommendedTopics
-				.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
-					.ui-padded-sm
-						img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
-					.ui-flex-column.ui-flex-1x.ui-padded-sm
-						.ui-flex-row(style='margin-bottom: 4px;')
-							.ui-flex-1x {{user.username}}
-							small.ui-text-mute {{fromNow createdAt}}
-						h2
-							a(href='{{pathFor route="viewTopic"}}') {{title}}
+
+				+topicItem
+
+template(name='topicItem')
+	.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
+		.ui-padded-sm
+			if user.profile.avatarUrl
+				img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
+			else
+				canvas(width='48' height='48' data-jdenticon-hash='{{user.profile.avatarHash}}')
+		.ui-flex-column.ui-flex-1x.ui-padded-sm
+			.ui-flex-row(style='margin-bottom: 4px;')
+				.ui-flex-1x {{user.username}}
+				small.ui-text-mute {{fromNow createdAt}}
+			h2
+				a(href='{{pathFor route="viewTopic"}}') {{title}}
+			.ui-flex-row
+				small.ui-padded-sm {{stats.likes}} 喜欢
+				small.ui-padded-sm {{stats.comments}} 讨论
+				small.ui-padded-sm {{stats.views}} 浏览
