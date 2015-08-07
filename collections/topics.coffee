@@ -1,5 +1,12 @@
 #
 
+findUser = (id) ->
+	Meteor.users.findOne id,
+		fields:
+			services: false
+
+#
+
 @Topics = new Mongo.Collection 'topics'
 
 #
@@ -32,15 +39,11 @@ Meteor.methods
 
 if Meteor.isServer
 
+	#
+
 	Meteor.publishTransformed 'findTopic', (id) ->
 		Topics.find({ _id: id }).serverTransform
-			user: (topic) ->
-				Meteor.users.findOne topic.userId,
-					fields:
-						services: false
-
-	Meteor.publish 'randomTopic', ->
-		Topics.find {}, { limit: 1 }
+			user: (topic) -> findUser topic.userId
 
 	#
 
@@ -51,10 +54,7 @@ if Meteor.isServer
 		selector = { createdAt: { $gte: startOfDay, $lte: endOfDay } }
 		Topics.find(selector, options).serverTransform
 			totd: true
-			user: (topic) ->
-				Meteor.users.findOne topic.userId,
-					fields:
-						services: false
+			user: (topic) -> findUser topic.userId
 
 	#
 
@@ -67,26 +67,17 @@ if Meteor.isServer
 		selector = { createdAt: { $gte: startOfMonth, $lte: startOfDay } }
 		Topics.find(selector, options).serverTransform
 			totm: true
-			user: (topic) ->
-				Meteor.users.findOne topic.userId,
-					fields:
-						services: false
+			user: (topic) -> findUser topic.userId
 
 	#
 
 	Meteor.publishTransformed 'recommendedTopics', (options) ->
 		Topics.find({ recommended: true }, options).serverTransform
-			user: (topic) ->
-				Meteor.users.findOne topic.userId,
-					fields:
-						services: false
+			user: (topic) -> findUser topic.userId
 
 	#
 
 	Meteor.publishTransformed 'latestTopics', (options) ->
 		Topics.find({}, options).serverTransform
 			latest: true
-			user: (topic) ->
-				Meteor.users.findOne topic.userId,
-					fields:
-						services: false
+			user: (topic) -> findUser topic.userId
