@@ -6,6 +6,7 @@
 
 Comments.before.insert (userId, comment) ->
 	_.extend comment,
+		userId: userId
 		createdAt: new Date()
 
 #
@@ -30,14 +31,22 @@ if Meteor.isServer
 
 	#
 
-	Meteor.publish 'findLeftComments', (topicId) ->
-		Comments.find { topicId: topicId, left: true },
-			sort:
-				createdAt: -1
+	Comments.serverTransform (comment) ->
+		comment.user = Meteor.users.findOne comment.userId
+		return comment
 
 	#
 
-	Meteor.publish 'findRightComments', (topicId) ->
-		Comments.find { topicId: topicId, left: false },
-			sort:
-				createdAt: -1
+	Meteor.publishTransformed 'findLeftComments', (id, opt = { sort: { createdAt: -1 } }) ->
+
+		check id, String
+
+		Comments.find { topicId: id, left: true }, opt
+
+	#
+
+	Meteor.publishTransformed 'findRightComments', (id, opt = { sort: { createdAt: -1 } }) ->
+
+		check id, String
+
+		Comments.find { topicId: id, left: false }, opt

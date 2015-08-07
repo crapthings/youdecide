@@ -35,21 +35,27 @@ Meteor.startup ->
 				displayName: '演示用户'
 				avatarHash: CryptoJS.MD5('demo').toString()
 
-	_(100).times ->
+	#
+
+	_(30).times ->
 		username = faker.internet.userName()
-		Meteor.users.insert
+		Meteor.users.direct.insert
 			username: username
 			profile:
 				displayName: faker.name.findName()
 				avatarHash: CryptoJS.MD5(username).toString()
 
+	#
+
 	users = Meteor.users.find().fetch()
+
+	#
 
 	for user in users
 
-		_(_.random 10, 20).times ->
+		_(_.random 5, 10).times ->
 
-			Topics.insert
+			Topics.direct.insert
 				userId: user._id
 				title: faker.lorem.sentence()
 				createdAt: _.sample [ faker.date.recent() ]

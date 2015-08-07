@@ -22,3 +22,4 @@ momentjs:moment
 tmeasday:publish-counts
 maximum:server-transform
 jparker:crypto-md5
+dburles:mongo-collection-instances

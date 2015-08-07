@@ -9,6 +9,8 @@ Meteor.users.after.insert ->
 
 if Meteor.isServer
 
+	#
+
 	Meteor.publish '', ->
 		unless @userId
 			@ready()

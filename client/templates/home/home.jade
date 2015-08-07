@@ -42,11 +42,11 @@ template(name='topicItem')
 			else
 				canvas(width='48' height='48' data-jdenticon-hash='{{user.profile.avatarHash}}')
 		.ui-flex-column.ui-flex-1x.ui-padded-sm
+			h2
+				a(href='{{pathFor route="viewTopic"}}') {{title}}
 			.ui-flex-row(style='margin-bottom: 4px;')
 				.ui-flex-1x {{user.username}}
 				small.ui-text-mute {{fromNow createdAt}}
-			h2
-				a(href='{{pathFor route="viewTopic"}}') {{title}}
 			.ui-flex-row
 				small.ui-padded-sm {{stats.likes}} 喜欢
 				small.ui-padded-sm {{stats.comments}} 讨论
