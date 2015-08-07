@@ -53,14 +53,24 @@ Meteor.startup ->
 
 	for user in users
 
-		_(_.random 5, 10).times ->
+		_(_.random 4, 8).times ->
 
-			Topics.direct.insert
+			topicId = Topics.direct.insert
 				userId: user._id
 				title: faker.lorem.sentence()
 				createdAt: _.sample [ faker.date.recent() ]
 				recommended: _.sample [true, false]
+				left: faker.lorem.sentence()
+				right: faker.lorem.sentence()
 				stats:
-					views: _.random 100, 1000
-					likes: _.random 100, 1000
+					hearts: _.random 100, 1000
 					comments: _.random 100, 1000
+					views: _.random 100, 1000
+
+			_(_.random 8, 16).times ->
+				Comments.direct.insert
+					userId: user._id
+					topicId: topicId
+					content: faker.lorem.sentences()
+					createdAt: _.sample [ faker.date.recent() ]
+					left: _.sample [true, false]

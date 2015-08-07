@@ -1,37 +1,3 @@
-template(name='viewTopic')
-
-	.ui-flex-row.ui-flex-center--child
-
-	.ui-flex-1x
-
-		h3.ui-padded {{topic.title}}
-
-			.ui-flex-row
-
-				.ui-flex-1x
-
-					with topic
-
-						form#leftForm
-							textarea.leftContent(required)
-							input(type='submit' value='提交')
-
-					.ui-flex-column
-						each commentsLeft
-							+commentItem
-
-				.ui-flex-1x
-
-					with topic
-
-						form#rightForm
-							textarea.rightContent(required)
-							input(type='submit' value='提交')
-
-					.ui-flex-column
-						each commentsRight
-							+commentItem
-
 template(name='commentItem')
 	.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
 		.ui-padded-sm

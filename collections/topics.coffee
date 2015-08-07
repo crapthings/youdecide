@@ -32,8 +32,12 @@ Meteor.methods
 
 if Meteor.isServer
 
-	Meteor.publish 'findTopic', (id) ->
-		Topics.find { _id: id }
+	Meteor.publishTransformed 'findTopic', (id) ->
+		Topics.find({ _id: id }).serverTransform
+			user: (topic) ->
+				Meteor.users.findOne topic.userId,
+					fields:
+						services: false
 
 	Meteor.publish 'randomTopic', ->
 		Topics.find {}, { limit: 1 }

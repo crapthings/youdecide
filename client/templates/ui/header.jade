@@ -4,10 +4,10 @@ template(name='ui_header')
 
 		a(href='{{pathFor route="home"}}' class='{{isActiveRoute regex="home"}}') 今日热门
 
-		a(href='{{pathFor route="home"}}') 最新话题
+		a(href='{{pathFor route="latest"}}' class='{{isActiveRoute regex="latest"}}') 最新话题
 
-		a(href='{{pathFor route="home"}}') 推荐话题
+		a(href='{{pathFor route="hottest"}}' class='{{isActiveRoute regex="hottest"}}') 热门话题
 
-		a(href='{{pathFor route="home"}}') 热门话题
+		a(href='{{pathFor route="recommended"}}' class='{{isActiveRoute regex="recommended"}}') 推荐话题
 
 		a(href='{{pathFor route="home"}}') 随便看看

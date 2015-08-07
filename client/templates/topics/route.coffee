@@ -7,7 +7,7 @@ Router.route '/topics/new', ->
 
 #
 
-Router.route '/topics/view/:_id', ->
+Router.route '/t/v/:_id', ->
 	@layout 'layout_topic'
 	@render 'viewTopic',
 		data: ->
