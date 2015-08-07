@@ -32,6 +32,9 @@ Meteor.methods
 
 if Meteor.isServer
 
+	Meteor.publish 'findTopic', (id) ->
+		Topics.find { _id: id }
+
 	Meteor.publish 'randomTopic', ->
 		Topics.find {}, { limit: 1 }
 

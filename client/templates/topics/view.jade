@@ -1,23 +1,33 @@
 template(name='viewTopic')
 
-	with topic
+	.ui-flex-row.ui-flex-center--child
 
-		.ui-flex-row.ui-flex-center--child
+	.ui-flex-1x
 
-		.ui-flex-1x
+		h3.ui-padded {{topic.title}}
 
-			h3.ui-padded  {{title}}
+			.ui-flex-row
 
-				.ui-flex-row
+				.ui-flex-1x
 
-					.ui-flex-1x
+					with topic
 
 						form#leftForm
-							textarea.leftContent
+							textarea.leftContent(required)
 							input(type='submit' value='提交')
 
-					.ui-flex-1x
+					.ui-flex-column
+						each commentsLeft
+							a {{content}}
+
+				.ui-flex-1x
+
+					with topic
 
 						form#rightForm
-							textarea.rightContent
+							textarea.rightContent(required)
 							input(type='submit' value='提交')
+
+					.ui-flex-column
+						each commentsRight
+							a {{content}}

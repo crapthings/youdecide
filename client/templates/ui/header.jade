@@ -15,4 +15,4 @@ template(name='ui_header')
 					a.ui-padded-sm(href='{{pathFor route="signup"}}') 注册
 				else
 					a.ui-padded-sm(href='{{pathFor route="profile"}}') {{currentUser.username}}
-					a.ui-padded-sm(href='#' onclick='Meteor.logout();') 注销
+					a.ui-padded-sm(href='#' onclick='Meteor.signout();') 注销

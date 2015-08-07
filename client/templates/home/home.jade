@@ -1,65 +1,67 @@
 template(name='home')
 
-	.ui-flex-column.ui-flex-1x
+	.ui-module
 
-		h3.ui-padded 最新话题
+		.ui-flex-column.ui-flex-1x
 
-		each latestTopics
-			.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
-				.ui-padded-sm
-					img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
-				.ui-flex-column.ui-flex-1x.ui-padded-sm
-					.ui-flex-row(style='margin-bottom: 4px;')
-						.ui-flex-1x {{user.username}}
-						small.ui-text-mute {{fromNow createdAt}}
-					h2
-						a(href='{{pathFor route="viewTopic"}}') {{title}}
-					.ui-flex-row
-						small.ui-padded-sm {{stats.likes}} 喜欢
-						small.ui-padded-sm {{stats.comments}} 讨论
-						small.ui-padded-sm {{stats.views}} 浏览
+			h3.ui-padded 最新话题
 
-	.ui-flex-column.ui-flex-1x.ui-padded-sm
+			each latestTopics
+				.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
+					.ui-padded-sm
+						img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
+					.ui-flex-column.ui-flex-1x.ui-padded-sm
+						.ui-flex-row(style='margin-bottom: 4px;')
+							.ui-flex-1x {{user.username}}
+							small.ui-text-mute {{fromNow createdAt}}
+						h2
+							a(href='{{pathFor route="viewTopic"}}') {{title}}
+						.ui-flex-row
+							small.ui-padded-sm {{stats.likes}} 喜欢
+							small.ui-padded-sm {{stats.comments}} 讨论
+							small.ui-padded-sm {{stats.views}} 浏览
 
-		h3.ui-padded 今日热门
+		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
-		each topicsOfTheDay
-			.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
-				.ui-padded-sm
-					img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
-				.ui-flex-column.ui-flex-1x.ui-padded-sm
-					.ui-flex-row(style='margin-bottom: 4px;')
-						.ui-flex-1x {{user.username}}
-						small.ui-text-mute {{fromNow createdAt}}
-					h2
-						a(href='{{pathFor route="viewTopic"}}') {{title}}
+			h3.ui-padded 今日热门
 
-	.ui-flex-column.ui-flex-1x.ui-padded-sm
+			each topicsOfTheDay
+				.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
+					.ui-padded-sm
+						img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
+					.ui-flex-column.ui-flex-1x.ui-padded-sm
+						.ui-flex-row(style='margin-bottom: 4px;')
+							.ui-flex-1x {{user.username}}
+							small.ui-text-mute {{fromNow createdAt}}
+						h2
+							a(href='{{pathFor route="viewTopic"}}') {{title}}
 
-		h3.ui-padded 热门话题
+		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
-		each topicsOfTheMonth
-			.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
-				.ui-padded-sm
-					img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
-				.ui-flex-column.ui-flex-1x.ui-padded-sm
-					.ui-flex-row(style='margin-bottom: 4px;')
-						.ui-flex-1x {{user.username}}
-						small.ui-text-mute {{fromNow createdAt}}
-					h2
-						a(href='{{pathFor route="viewTopic"}}') {{title}}
+			h3.ui-padded 热门话题
 
-	.ui-flex-column.ui-flex-1x.ui-padded-sm
+			each topicsOfTheMonth
+				.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
+					.ui-padded-sm
+						img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
+					.ui-flex-column.ui-flex-1x.ui-padded-sm
+						.ui-flex-row(style='margin-bottom: 4px;')
+							.ui-flex-1x {{user.username}}
+							small.ui-text-mute {{fromNow createdAt}}
+						h2
+							a(href='{{pathFor route="viewTopic"}}') {{title}}
 
-		h3.ui-padded 推荐话题
+		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
-		each recommendedTopics
-			.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
-				.ui-padded-sm
-					img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
-				.ui-flex-column.ui-flex-1x.ui-padded-sm
-					.ui-flex-row(style='margin-bottom: 4px;')
-						.ui-flex-1x {{user.username}}
-						small.ui-text-mute {{fromNow createdAt}}
-					h2
-						a(href='{{pathFor route="viewTopic"}}') {{title}}
+			h3.ui-padded 推荐话题
+
+			each recommendedTopics
+				.ui-flex-row.ui-padded-sm(style='border-bottom: 1px solid #efefef;')
+					.ui-padded-sm
+						img.ui-image-circle(src='{{user.profile.avatarUrl}}' style='width: 48px; height: 48px;')
+					.ui-flex-column.ui-flex-1x.ui-padded-sm
+						.ui-flex-row(style='margin-bottom: 4px;')
+							.ui-flex-1x {{user.username}}
+							small.ui-text-mute {{fromNow createdAt}}
+						h2
+							a(href='{{pathFor route="viewTopic"}}') {{title}}

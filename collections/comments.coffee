@@ -1,21 +1,43 @@
+#
+
 @Comments = new Mongo.Collection 'comments'
+
+#
+
+Comments.before.insert (userId, comment) ->
+	_.extend comment,
+		createdAt: new Date()
+
+#
 
 Meteor.methods
 
-	commentLeft: (opt) ->
+	commentLeft: (topicId, content) ->
 		Comments.insert
 			left: true
-			content: opt
+			topicId: topicId
+			content: content
 
-	commentRight: (opt) ->
+	commentRight: (topicId, content) ->
 		Comments.insert
 			left: false
-			content: opt
+			topicId: topicId
+			content: content
+
+#
 
 if Meteor.isServer
 
-	Meteor.publish 'leftComments', ->
-		Comments.find {}
+	#
 
-	Meteor.publish 'rightComments', ->
-		Comments.find {}
+	Meteor.publish 'findLeftComments', (topicId) ->
+		Comments.find { topicId: topicId, left: true },
+			sort:
+				createdAt: -1
+
+	#
+
+	Meteor.publish 'findRightComments', (topicId) ->
+		Comments.find { topicId: topicId, left: false },
+			sort:
+				createdAt: -1
