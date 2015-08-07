@@ -1,0 +1,52 @@
+template(name='viewTopic')
+
+	.ui-module
+
+		with topic
+
+			.ui-flex-column.ui-flex-center--child
+
+				.ui-flex-column.ui-pdtb-md(style='padding-bottom: 0;')
+					h3 {{title}}
+
+				.ui-flex-row.ui-flex-center--child
+
+					.ui-flex-1x.ui-padded-md
+						span {{left}}
+
+					.ui-padded-md
+						if user.profile.avatarUrl
+							img.ui-image-circle.ui-image-avatar(src='{{user.profile.avatarUrl}}' style='width: 80px; height: 80px;')
+						else
+							canvas(width='80' height='80' data-jdenticon-hash='{{user.profile.avatarHash}}')
+
+					.ui-flex-1x.ui-padded-md
+						span {{right}}
+
+		.ui-flex-row
+
+			.ui-flex-1x
+				.ui-red(style='height: 32px; background-color: red;')
+
+				with topic
+
+					form#leftForm
+						textarea.leftContent(required)
+						input(type='submit' value='提交')
+
+				.ui-flex-column
+					each commentsLeft
+						+commentItem
+
+			.ui-flex-1x
+				.ui-red(style='height: 32px; background-color: blue;')
+
+				with topic
+
+					form#rightForm
+						textarea.rightContent(required)
+						input(type='submit' value='提交')
+
+				.ui-flex-column
+					each commentsRight
+						+commentItem
