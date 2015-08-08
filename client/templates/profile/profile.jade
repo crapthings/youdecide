@@ -1,3 +1,17 @@
 template(name='profile')
 
-	h1 profile
+	.ui-module
+
+		form.ui-flex-column.ui-padded#profileForm
+
+			label.ui-flex-column
+				.ui-padded-sm 头像
+				if currentUser.profile.avatarUrl
+					img.ui-image-circle.ui-image-avatar(src='{{currentUser.profile.avatarUrl}}')
+				else
+					canvas(width='48' height='48' data-jdenticon-hash='{{currentUser.profile.avatarHash}}')
+				input(type='file' hidden)
+
+			label.ui-flex-column
+				.ui-padded-sm 昵称
+				input(type='text')

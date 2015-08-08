@@ -16,9 +16,9 @@ Topics.before.insert (userId, topic) ->
 		userId: topic.userId or userId
 		createdAt: topic.createdAt or new Date()
 		stats:
-			likes: 0
-			comments: 0
-			views: 0
+			likes: topic.stats.likes or 0
+			comments: topic.stats.comments or 0
+			views: topic.stats.views or 0
 
 #
 
@@ -34,6 +34,10 @@ Meteor.methods
 	newTopic: (title) ->
 		id = Topics.insert
 			title: title
+
+	findRandomTopic: ->
+		countTopic = System.findOne({ init: true }).stats?.topics
+		Topics.findOne({}, {skip: _.random 1, countTopic})._id
 
 #
 

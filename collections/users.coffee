@@ -1,5 +1,12 @@
 #
 
+Meteor.users.helpers
+
+	displayName: ->
+		@profile?.displayName or @username
+
+#
+
 Meteor.users.before.insert (userId, user) ->
 	_.extend user,
 		profile:

@@ -7,3 +7,9 @@ Template.ui_header.events
 		Meteor.loginWithPassword $username, $password, (err) ->
 			unless err
 				Router.go 'home'
+
+	'click .randomTopic': (e, t) ->
+		e.preventDefault()
+		Meteor.call 'findRandomTopic', (err, res) ->
+			unless err
+				Router.go 'viewTopic', { _id: res }

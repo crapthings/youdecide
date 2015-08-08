@@ -55,7 +55,7 @@ Meteor.startup ->
 
 		_(_.random 4, 8).times ->
 
-			topicId = Topics.direct.insert
+			topicId = Topics.insert
 				userId: user._id
 				title: faker.lorem.sentence()
 				createdAt: _.sample [ faker.date.recent() ]
@@ -70,7 +70,7 @@ Meteor.startup ->
 					right: _.random 100, 1000
 
 			_(_.random 8, 16).times ->
-				Comments.direct.insert
+				Comments.insert
 					userId: user._id
 					topicId: topicId
 					content: faker.lorem.sentences()

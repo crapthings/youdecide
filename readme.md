@@ -14,3 +14,7 @@
 
     cd youdecide
     meteor
+
+### demo here
+
+    http://youdecide.meteor.com

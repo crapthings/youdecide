@@ -25,3 +25,4 @@ jparker:crypto-md5
 dburles:mongo-collection-instances
 zimme:active-route
 fortawesome:fontawesome
+dburles:collection-helpers

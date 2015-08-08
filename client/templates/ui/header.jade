@@ -10,8 +10,14 @@ template(name='ui_header')
 
 		a(href='{{pathFor route="recommended"}}' class='{{isActiveRoute regex="recommended"}}') 推荐话题
 
-		a(href='#') 随便看看
+		a(href='#').randomTopic 随便看看
 
-		a(href='{{pathFor route="signin"}}' class='{{isActiveRoute regex="signin"}}') 登录
+		unless currentUser
 
-		a(href='{{pathFor route="signup"}}' class='{{isActiveRoute regex="signup"}}') 注册
+			a(href='{{pathFor route="signin"}}' class='{{isActiveRoute regex="signin"}}') 登录
+
+			a(href='{{pathFor route="signup"}}' class='{{isActiveRoute regex="signup"}}') 注册
+
+		else
+
+			a(href='{{pathFor route="profile"}}' class='{{isActiveRoute regex="profile"}}') {{currentUser.displayName}}

@@ -1,15 +1,21 @@
 template(name='signup')
 
-	.ui-module
+	.ui-padded.ui-module
 
-		.ui-flex-row
+		form
 
-			.ui-flex-1x.ui-padded
+			label.ui-flex-column
 
-				form.ui-flex-column#signupForm
+				span.ui-padded-sm 用户名
 
-					input(type='text' required).username
-					input(type='password' required).password
-					input(type='submit' value='注册')
+				input(type='text' placeholder='用户名' required).username
 
-			.ui-flex-1x
+			label.ui-flex-column
+
+				span.ui-padded-sm 密码
+
+				input(type='password' placeholder='密码' required).password
+
+			.ui-padded-sm
+
+				input(type='submit' value='注册')
