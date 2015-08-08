@@ -10,7 +10,7 @@ Meteor.users.helpers
 Meteor.users.before.insert (userId, user) ->
 	_.extend user,
 		profile:
-			avatarHash: CryptoJS.MD5('demo').toString()
+			avatarHash: user.profile?.avatarHash or CryptoJS.MD5('demo').toString()
 
 #
 

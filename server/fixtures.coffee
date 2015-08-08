@@ -4,10 +4,9 @@ faker = Meteor.npmRequire 'faker'
 
 #
 
-System.remove {}
-Meteor.users.remove {}
-Topics.remove {}
-Comments.remove {}
+collections = Mongo.Collection.getAll()
+for collection in collections
+	Mongo.Collection.get(collection.name).remove {}
 
 #
 
@@ -15,25 +14,21 @@ Meteor.startup ->
 
 	#
 
-	unless System.findOne()
-
-		System.insert
-			init: true
-			stats:
-				users: 0
-				topics: 0
-				comments: 0
+	System.insert
+		init: true
+		stats:
+			users: 0
+			topics: 0
+			comments: 0
 
 	#
 
-	unless Meteor.users.findOne { username: 'demo' }
-
-		Accounts.createUser
-			username: 'demo'
-			password: 'demo'
-			profile:
-				displayName: '演示用户'
-				avatarHash: CryptoJS.MD5('demo').toString()
+	Accounts.createUser
+		username: 'demo'
+		password: 'demo'
+		profile:
+			displayName: '演示用户'
+			avatarHash: CryptoJS.MD5('demo').toString()
 
 	#
 
@@ -57,11 +52,11 @@ Meteor.startup ->
 
 			topicId = Topics.insert
 				userId: user._id
-				title: faker.lorem.sentence()
 				createdAt: _.sample [ faker.date.recent() ]
-				recommended: _.sample [true, false]
+				title: faker.lorem.sentence()
 				left: faker.lorem.sentence()
 				right: faker.lorem.sentence()
+				recommended: _.sample [true, false]
 				stats:
 					likes: _.random 100, 1000
 					comments: _.random 100, 1000
@@ -72,7 +67,7 @@ Meteor.startup ->
 			_(_.random 8, 16).times ->
 				Comments.insert
 					userId: user._id
+					createdAt: _.sample [ faker.date.recent() ]
 					topicId: topicId
 					content: faker.lorem.sentences()
-					createdAt: _.sample [ faker.date.recent() ]
 					left: _.sample [true, false]

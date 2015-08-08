@@ -6,7 +6,7 @@
 
 Comments.before.insert (userId, comment) ->
 	_.extend comment,
-		userId: userId
+		userId: comment.userId or userId
 		createdAt: new Date()
 
 #

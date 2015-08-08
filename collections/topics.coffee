@@ -19,6 +19,8 @@ Topics.before.insert (userId, topic) ->
 			likes: topic.stats.likes or 0
 			comments: topic.stats.comments or 0
 			views: topic.stats.views or 0
+			left: topic.stats.left or 0
+			right: topic.stats.right or 0
 
 #
 
