@@ -1,9 +1,21 @@
 template(name='signin')
 
-	form.ui-flex-column
+	.ui-padded.ui-module
 
-		input(type='text' placeholder='用户名' required).username
+		form
 
-		input(type='password' placeholder='密码' required).password
+			label.ui-flex-column
 
-		input(type='submit' value='登陆')
+				span.ui-padded-sm 用户名
+
+				input(type='text' placeholder='用户名' required).username
+
+			label.ui-flex-column
+
+				span.ui-padded-sm 密码
+
+				input(type='password' placeholder='密码' required).password
+
+			.ui-padded-sm
+
+				input(type='submit' value='登陆')

@@ -1,9 +1,15 @@
 template(name='signup')
 
-	.ui-padded-sm
+	.ui-module
 
-		form#signupForm
+		.ui-flex-row
 
-			input(type='text' required).username
-			input(type='password' required).password
-			input(type='submit' value='注册')
+			.ui-flex-1x.ui-padded
+
+				form.ui-flex-column#signupForm
+
+					input(type='text' required).username
+					input(type='password' required).password
+					input(type='submit' value='注册')
+
+			.ui-flex-1x

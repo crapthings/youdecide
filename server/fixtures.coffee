@@ -63,9 +63,11 @@ Meteor.startup ->
 				left: faker.lorem.sentence()
 				right: faker.lorem.sentence()
 				stats:
-					hearts: _.random 100, 1000
+					likes: _.random 100, 1000
 					comments: _.random 100, 1000
 					views: _.random 100, 1000
+					left: _.random 100, 1000
+					right: _.random 100, 1000
 
 			_(_.random 8, 16).times ->
 				Comments.direct.insert
