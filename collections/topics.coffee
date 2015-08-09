@@ -16,11 +16,11 @@ Topics.before.insert (userId, topic) ->
 		userId: topic.userId or userId
 		createdAt: topic.createdAt or new Date()
 		stats:
-			likes: topic.stats.likes or 0
-			comments: topic.stats.comments or 0
-			views: topic.stats.views or 0
-			left: topic.stats.left or 0
-			right: topic.stats.right or 0
+			likes: topic.stats?.likes or 0
+			comments: topic.stats?.comments or 0
+			views: topic.stats?.views or 0
+			left: topic.stats?.left or 0
+			right: topic.stats?.right or 0
 
 #
 
@@ -33,17 +33,26 @@ Topics.after.insert (userId, topic) ->
 
 Meteor.methods
 
-	newTopic: (title) ->
-		id = Topics.insert
-			title: title
+	newTopic: (opt) ->
+		_opt =
+			title: opt.title
+			desc: opt.desc
+
+		id = Topics.insert _opt
 
 	findRandomTopic: ->
 		countTopic = System.findOne({ init: true }).stats?.topics
-		Topics.findOne({}, {skip: _.random 1, countTopic})._id
+		Topics.findOne({}, {skip: _.random 1, countTopic})?._id
 
 #
 
 if Meteor.isServer
+
+	#
+
+	Meteor.publishTransformed 'findTopics', (selector, options) ->
+		Topics.find(selector, options).serverTransform
+			user: (topic) -> findUser topic.userId
 
 	#
 

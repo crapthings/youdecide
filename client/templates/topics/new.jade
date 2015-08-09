@@ -1,5 +1,23 @@
 template(name='newTopic')
 
-	form#topicForm
-		input(type='text').title
-		input(type='submit' value='发布')
+	.ui-padded.ui-module
+
+		form.ui-flex-column#topicForm
+
+			label.ui-flex-column
+
+				.ui-padded-sm 标题
+
+				input(type='text' name='title' placeholder='一个好的标题可以激起他们的讨论欲望。。。' required)
+
+			label.ui-flex-column
+
+				.ui-padded-sm 描述
+
+				textarea(type='text' name='desc' placeholder='话题描述' rows='5' required)
+
+			.ui-padded-sm
+
+				input(type='submit' value='发布')
+
+				input(type='reset' value='重置' hidden).method-form-reset

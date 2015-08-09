@@ -21,6 +21,14 @@ Meteor.users.after.insert ->
 
 #
 
+Meteor.methods
+
+	updateProfile: (opt) ->
+		Meteor.users.update Meteor.userId(),
+			$set: opt
+
+#
+
 if Meteor.isServer
 
 	#

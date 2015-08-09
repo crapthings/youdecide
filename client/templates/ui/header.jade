@@ -1,23 +1,31 @@
 template(name='ui_header')
 
-	.ui-flex-row.ui-flex-left-center--child.ui-header
+	.ui-flex-row
 
-		a(href='{{pathFor route="home"}}' class='{{isActiveRoute regex="home"}}') 今日热门
+		.ui-flex-row.ui-flex-1x.ui-flex-left-center--child.ui-header
 
-		a(href='{{pathFor route="latest"}}' class='{{isActiveRoute regex="latest"}}') 最新话题
+			a(href='{{pathFor route="home"}}' class='{{isActiveRoute regex="home"}}') 今日热门
 
-		a(href='{{pathFor route="hottest"}}' class='{{isActiveRoute regex="hottest"}}') 热门话题
+			a(href='{{pathFor route="latest"}}' class='{{isActiveRoute regex="latest"}}') 最新话题
 
-		a(href='{{pathFor route="recommended"}}' class='{{isActiveRoute regex="recommended"}}') 推荐话题
+			a(href='{{pathFor route="hottest"}}' class='{{isActiveRoute regex="hottest"}}') 热门话题
 
-		a(href='#').randomTopic 随便看看
+			a(href='{{pathFor route="recommended"}}' class='{{isActiveRoute regex="recommended"}}') 推荐话题
 
-		unless currentUser
+			a(href='#').randomTopic 随便看看
 
-			a(href='{{pathFor route="signin"}}' class='{{isActiveRoute regex="signin"}}') 登录
+		.ui-flex-row.ui-flex-right-center--child.ui-header
 
-			a(href='{{pathFor route="signup"}}' class='{{isActiveRoute regex="signup"}}') 注册
+			unless currentUser
 
-		else
+				a(href='{{pathFor route="signin"}}' class='{{isActiveRoute regex="signin"}}') 登录
 
-			a(href='{{pathFor route="profile"}}' class='{{isActiveRoute regex="profile"}}') {{currentUser.displayName}}
+				a(href='{{pathFor route="signup"}}' class='{{isActiveRoute regex="signup"}}') 注册
+
+			else
+
+				a(href='{{pathFor route="my"}}' class='{{isActiveRoute regex="my"}}') {{currentUser.displayName}}
+
+				a(href='{{pathFor route="profile"}}' class='{{isActiveRoute regex="profile"}}') 档案
+
+				a(href='{{pathFor route="newTopic"}}' class='{{isActiveRoute regex="newTopic"}}') 新话题

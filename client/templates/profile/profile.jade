@@ -1,17 +1,24 @@
 template(name='profile')
 
-	.ui-module
+	with currentUser
 
-		form.ui-flex-column.ui-padded#profileForm
+		.ui-module
 
-			label.ui-flex-column
-				.ui-padded-sm 头像
-				if currentUser.profile.avatarUrl
-					img.ui-image-circle.ui-image-avatar(src='{{currentUser.profile.avatarUrl}}')
-				else
-					canvas(width='48' height='48' data-jdenticon-hash='{{currentUser.profile.avatarHash}}')
-				input(type='file' hidden)
+			form.ui-flex-column.ui-padded#profileForm
 
-			label.ui-flex-column
-				.ui-padded-sm 昵称
-				input(type='text')
+				//- label.ui-flex-column
+
+					.ui-padded-sm 头像
+					if currentUser.profile.avatarUrl
+						img.ui-image-circle.ui-image-avatar(src='{{currentUser.profile.avatarUrl}}')
+					else
+						canvas(width='48' height='48' data-jdenticon-hash='{{currentUser.profile.avatarHash}}')
+
+					input(type='file' hidden)
+
+				label.ui-flex-column
+					.ui-padded-sm 昵称
+					input(type='text' name='profile.displayName' value='{{profile.displayName}}')
+
+				.ui-padded
+					input(type='submit' value='更新档案')

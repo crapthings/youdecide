@@ -54,6 +54,7 @@ Meteor.startup ->
 				userId: user._id
 				createdAt: _.sample [ faker.date.recent() ]
 				title: faker.lorem.sentence()
+				desc: faker.lorem.sentences()
 				left: faker.lorem.sentence()
 				right: faker.lorem.sentence()
 				recommended: _.sample [true, false]

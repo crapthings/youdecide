@@ -13,8 +13,20 @@ template(name='topicItem')
 			h3
 				a(href='{{pathFor route="viewTopic"}}') {{title}}
 
+			small {{desc}}
+
 			.ui-flex-row(style='margin-bottom: 4px;')
 				small.ui-text-mute {{user.username}} 发布于 {{fromNow createdAt}}
+
+			.ui-flex-row
+
+				.ui-flex-1x
+					small(style='color: red;') {{left}}
+
+				.ui-gap(style='width: 16px;')
+
+				.ui-flex-1x
+					small(style='color: blue;') {{right}}
 
 		.ui-flex-column.ui-flex-center--child.ui-padded-sm
 
@@ -26,6 +38,6 @@ template(name='topicItem')
 
 		.ui-flex-column.ui-flex-center--child
 
-			.ui-flex-1x.ui-padded-sm
+			.ui-flex-1x.ui-padded-sm(style='align-items: flex-start;')
 
 				canvas.chart(width='48' height='48')
