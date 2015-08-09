@@ -11,6 +11,22 @@ Comments.before.insert (userId, comment) ->
 
 #
 
+Comments.after.insert (userId, comment) ->
+	if comment.left
+		Topics.update comment.topicId,
+			$set:
+				left: comment.content
+			$inc:
+				'stats.left': 1
+	else
+		Topics.update comment.topicId,
+			$set:
+				right: comment.content
+			$inc:
+				'stats.right': 1
+
+#
+
 Meteor.methods
 
 	commentLeft: (topicId, content) ->

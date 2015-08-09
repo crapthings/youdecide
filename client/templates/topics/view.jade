@@ -24,15 +24,29 @@ template(name='viewTopic')
 					.ui-flex-1x.ui-padded-md
 						span {{right}}
 
+				.ui-flex-row.ui-flex-center--child
+
+					.ui-flex-1x.ui-padded-md
+
+					.ui-flex-row.ui-flex-1x.ui-flex-center--child
+
+						.ui-flex-1x.ui-padded 点赞
+
+						.ui-flex-1x.ui-padded 收藏
+
+					.ui-flex-row.ui-flex-1x.ui-flex-right-center--child
+
+						.ui-flex-1x.ui-padded 内容不适
+
+		progress(value='{{rbRatio}}' max='1')
+
 		.ui-flex-row
 
-			.ui-flex-1x
+			.ui-flex-1x.ui-flex-left-center--child
+				.ui-flex-1x.ui-padded-sm {{topic.stats.left}}
 
-				.ui-red(style='height: 32px; background-color: red;')
-
-			.ui-flex-1x
-
-				.ui-blue(style='height: 32px; background-color: blue;')
+			.ui-flex-1x.ui-flex-right-center--child
+				.ui-flex-1x.ui-padded-sm {{topic.stats.right}}
 
 		if currentUser
 

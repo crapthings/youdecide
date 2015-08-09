@@ -59,15 +59,15 @@ Meteor.startup ->
 				right: faker.lorem.sentence()
 				recommended: _.sample [true, false]
 				stats:
-					likes: _.random 100, 1000
-					comments: _.random 100, 1000
-					views: _.random 100, 1000
-					left: _.random 100, 1000
-					right: _.random 100, 1000
+					views: _.random 10, 1000
+					comments: _.random 10, 1000
+					likes: _.random 110, 1000
+					left: _.random 10, 1000
+					right: _.random 10, 1000
 
 			_(_.random 8, 16).times ->
 				Comments.insert
-					userId: user._id
+					userId: (_.sample users)._id
 					createdAt: _.sample [ faker.date.recent() ]
 					topicId: topicId
 					content: faker.lorem.sentences()

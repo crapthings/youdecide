@@ -10,10 +10,10 @@ template(name='commentItem')
 
 		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
-			span {{content}}
-
-			.ui-flex-row(style='margin-bottom: 4px;')
+			.ui-flex-row
 				small.ui-text-mute {{user.username}} 发布于 {{fromNow createdAt}}
+
+			span {{content}}
 
 			.ui-flex-row
 				small.ui-padded-sm {{stats.likes}} 喜欢

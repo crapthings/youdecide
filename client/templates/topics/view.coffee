@@ -12,6 +12,11 @@ Template.viewTopic.events
 				($ t.find '.leftContent').val ''
 				autosize($ 'textarea')
 
+	'keyup .leftContent': (e, t) ->
+		e.preventDefault()
+		if e.keyCode is 13 and e.shiftKey
+			($ '#leftForm').trigger 'submit'
+
 	#
 
 	'submit #rightForm': (e, t) ->
@@ -22,9 +27,23 @@ Template.viewTopic.events
 				($ t.find '.rightContent').val ''
 				autosize($ 'textarea')
 
+	'keyup .rightContent': (e, t) ->
+		e.preventDefault()
+		if e.keyCode is 13 and e.shiftKey
+			($ '#rightForm').trigger 'submit'
+
 #
 
 Template.commentItem.rendered = ->
 	_.delay ->
 		jdenticon()
 	, 100
+
+
+Template.viewTopic.helpers
+
+	rbRatio: ->
+		if @topic.stats?.left is @topic.stats?.right
+			0.5
+		else
+			((@topic.stats?.left / (@topic.stats?.left + @topic.stats?.right)).ceil(2))
