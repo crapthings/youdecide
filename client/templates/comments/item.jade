@@ -10,14 +10,12 @@ template(name='commentItem')
 
 		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
-			h2
-				a(href='{{pathFor route="viewTopic"}}') {{content}}
+			span {{content}}
 
 			.ui-flex-row(style='margin-bottom: 4px;')
-				.ui-flex-1x {{user.username}}
-				small.ui-text-mute {{fromNow createdAt}}
+				small.ui-text-mute {{user.username}} 发布于 {{fromNow createdAt}}
 
 			.ui-flex-row
 				small.ui-padded-sm {{stats.likes}} 喜欢
 				small.ui-padded-sm {{stats.comments}} 讨论
-				small.ui-padded-sm {{stats.views}} 浏览?????]?=?b?
+				small.ui-padded-sm {{stats.views}} 浏览

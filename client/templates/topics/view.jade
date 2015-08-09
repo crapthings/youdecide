@@ -8,6 +8,7 @@ template(name='viewTopic')
 
 				.ui-flex-column.ui-pdtb-md(style='padding-bottom: 0;')
 					h3 {{title}}
+					p.ui-padded(style='padding: 16px 64px 0 64px;;') {{desc}}
 
 				.ui-flex-row.ui-flex-center--child
 
@@ -26,27 +27,54 @@ template(name='viewTopic')
 		.ui-flex-row
 
 			.ui-flex-1x
+
 				.ui-red(style='height: 32px; background-color: red;')
 
-				with topic
-
-					form#leftForm
-						textarea.leftContent(required)
-						input(type='submit' value='提交')
-
-				.ui-flex-column
-					each commentsLeft
-						+commentItem
-
 			.ui-flex-1x
-				.ui-red(style='height: 32px; background-color: blue;')
 
-				with topic
+				.ui-blue(style='height: 32px; background-color: blue;')
 
-					form#rightForm
-						textarea.rightContent(required)
-						input(type='submit' value='提交')
+		if currentUser
 
-				.ui-flex-column
-					each commentsRight
-						+commentItem
+			.ui-flex-row
+
+				.ui-flex-1x
+
+					with topic
+
+						form.ui-padded.ui-bordered-bottom#leftForm
+							textarea.leftContent(rows='3' placeholder='红色阵营' required)
+							.ui-padded-sm
+								input(type='submit' value='提交')
+
+				.ui-flex-1x
+
+					with topic
+
+						form.ui-padded.ui-bordered-bottom#rightForm
+							textarea.rightContent(rows='3' placeholder='蓝色阵营' required)
+							.ui-padded-sm
+								input(type='submit' value='提交')
+
+		else
+
+			.ui-flex-row.ui-flex-center--child
+
+				.ui-flex-1x.ui-padded-md
+
+					h3
+						a(href='{{pathFor route="signin"}}') 登录以后可以进行讨论
+
+		.ui-flex-row
+
+			.ui-flex-column.ui-flex-1x
+
+				each commentsLeft
+
+					+commentItem
+
+			.ui-flex-column.ui-flex-1x
+
+				each commentsRight
+
+					+commentItem

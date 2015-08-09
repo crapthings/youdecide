@@ -10,6 +10,7 @@ Template.viewTopic.events
 		Meteor.call 'commentLeft', @_id, $leftContent, (err) ->
 			unless err
 				($ t.find '.leftContent').val ''
+				autosize($ 'textarea')
 
 	#
 
@@ -19,6 +20,7 @@ Template.viewTopic.events
 		Meteor.call 'commentRight', @_id, $rightContent, (err) ->
 			unless err
 				($ t.find '.rightContent').val ''
+				autosize($ 'textarea')
 
 #
 

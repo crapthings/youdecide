@@ -50,6 +50,14 @@ if Meteor.isServer
 
 	#
 
+	Topics._ensureIndex { createdAt: -1, 'stats.likes': -1, 'stats.comments': -1, 'stats.views': -1 }
+
+	Topics._ensureIndex { createdAt: -1 }
+
+	Topics._ensureIndex { recommended: 1 }
+
+	#
+
 	Meteor.publishTransformed 'findTopics', (selector, options) ->
 		Topics.find(selector, options).serverTransform
 			user: (topic) -> findUser topic.userId

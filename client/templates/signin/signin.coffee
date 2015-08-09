@@ -7,3 +7,5 @@ Template.signin.events
 		Meteor.loginWithPassword $username, $password, (err) ->
 			unless err
 				Router.go 'home'
+			else
+				Session.set 'errorMessage', err.reason

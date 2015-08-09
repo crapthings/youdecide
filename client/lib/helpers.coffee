@@ -11,3 +11,7 @@ helper 'system', ->
 
 helper 'fromNow', (date) ->
 	moment(date).fromNow()
+
+#
+
+helper 'errorMessage', -> Session.get 'errorMessage'

@@ -8,3 +8,5 @@ Template.signup.events
 		Accounts.createUser opt, (err) ->
 			unless err
 				Router.go 'home'
+			else
+				Session.set 'errorMessage', err.reason

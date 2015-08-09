@@ -10,7 +10,7 @@ Meteor.users.helpers
 Meteor.users.before.insert (userId, user) ->
 	_.extend user,
 		profile:
-			avatarHash: user.profile?.avatarHash or CryptoJS.MD5('demo').toString()
+			avatarHash: user.profile?.avatarHash or CryptoJS.MD5(user.username).toString()
 
 #
 
@@ -24,8 +24,13 @@ Meteor.users.after.insert ->
 Meteor.methods
 
 	updateProfile: (opt) ->
+
+		profile = opt.profile?
+
 		Meteor.users.update Meteor.userId(),
-			$set: opt
+			$set:
+				profile: profile
+				updatedAt: new Date()
 
 #
 
