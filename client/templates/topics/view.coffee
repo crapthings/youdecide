@@ -32,6 +32,11 @@ Template.viewTopic.events
 		if e.keyCode is 13 and e.shiftKey
 			($ '#rightForm').trigger 'submit'
 
+	'click .method-like-topic': (e, t) ->
+		e.preventDefault()
+		console.log @
+		Meteor.call 'likeTopic', @_id
+
 #
 
 Template.commentItem.rendered = ->

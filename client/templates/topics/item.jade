@@ -3,10 +3,11 @@ template(name='topicItem')
 	.ui-flex-row.ui-padded-sm.ui-bordered-bottom.ui-module
 
 		.ui-padded-sm
-			if user.profile.avatarUrl
-				img.ui-image-circle.ui-image-avatar(src='{{user.profile.avatarUrl}}')
-			else
-				canvas(width='48' height='48' data-jdenticon-hash='{{user.profile.avatarHash}}')
+			a(href='{{pathFor route="viewUser"}}')
+				if user.profile.avatarUrl
+					img.ui-image-circle.ui-image-avatar(src='{{user.profile.avatarUrl}}')
+				else
+					canvas(width='48' height='48' data-jdenticon-hash='{{user.profile.avatarHash}}')
 
 		.ui-flex-column.ui-flex-1x.ui-padded-sm
 
@@ -16,7 +17,8 @@ template(name='topicItem')
 			small {{desc}}
 
 			.ui-flex-row(style='margin-bottom: 4px;')
-				small.ui-text-mute {{user.username}} 发布于 {{fromNow createdAt}}
+				a(href='{{pathFor route="viewUser"}}')
+					small.ui-text-mute {{user.username}} 发布于 {{fromNow createdAt}}
 
 			.ui-flex-row
 

@@ -34,7 +34,7 @@ Meteor.startup ->
 
 	_(30).times ->
 		username = faker.internet.userName()
-		Meteor.users.direct.insert
+		Meteor.users.insert
 			username: username
 			profile:
 				displayName: faker.name.findName()
@@ -48,7 +48,7 @@ Meteor.startup ->
 
 	for user in users
 
-		_(_.random 4, 8).times ->
+		_(_.random 10, 20).times ->
 
 			topicId = Topics.insert
 				userId: user._id
@@ -65,7 +65,7 @@ Meteor.startup ->
 					left: _.random 10, 1000
 					right: _.random 10, 1000
 
-			_(_.random 8, 16).times ->
+			_(_.random 10, 20).times ->
 				Comments.insert
 					userId: (_.sample users)._id
 					createdAt: _.sample [ faker.date.recent() ]

@@ -44,6 +44,11 @@ Meteor.methods
 		countTopic = System.findOne({ init: true }).stats?.topics
 		Topics.findOne({}, {skip: _.random 1, countTopic})?._id
 
+	likeTopic: (topicId) ->
+		Topics.update topicId,
+			$inc:
+				'stats.likes': 1
+
 #
 
 if Meteor.isServer

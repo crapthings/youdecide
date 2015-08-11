@@ -16,10 +16,11 @@ template(name='viewTopic')
 						span {{left}}
 
 					.ui-padded-md
-						if user.profile.avatarUrl
-							img.ui-image-circle.ui-image-avatar(src='{{user.profile.avatarUrl}}' style='width: 80px; height: 80px;')
-						else
-							canvas(width='80' height='80' data-jdenticon-hash='{{user.profile.avatarHash}}')
+						a(href='{{pathFor route="viewUser"}}')
+							if user.profile.avatarUrl
+								img.ui-image-circle.ui-image-avatar(src='{{user.profile.avatarUrl}}' style='width: 80px; height: 80px;')
+							else
+								canvas(width='80' height='80' data-jdenticon-hash='{{user.profile.avatarHash}}')
 
 					.ui-flex-1x.ui-padded-md
 						span {{right}}
@@ -30,7 +31,7 @@ template(name='viewTopic')
 
 					.ui-flex-row.ui-flex-1x.ui-flex-center--child
 
-						.ui-flex-1x.ui-padded 点赞
+						.ui-flex-1x.ui-padded.method-like-topic 点赞
 
 						.ui-flex-1x.ui-padded 收藏
 
