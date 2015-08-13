@@ -49,6 +49,11 @@ Meteor.methods
 			$inc:
 				'stats.likes': 1
 
+	incTopicView: (id) ->
+		Topics.update id,
+			$inc:
+				'stats.views': 1
+
 #
 
 if Meteor.isServer
